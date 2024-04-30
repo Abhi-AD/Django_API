@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "api1_app1",   # custom app
+    "api1_app1",   # api app
     "api1_app2",    # custom app
 ]
 

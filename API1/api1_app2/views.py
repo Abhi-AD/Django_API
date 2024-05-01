@@ -22,16 +22,13 @@ from api1_app2.serializers import ProductSerializers
 
 
 
-@api_view(["GET"])
+@api_view(["POST"])
 def api2_home(request, *args, **kwargs):
      """
      DRF API VIEW
      """
-     instance = Product.objects.all().order_by("?").first()
-     data = {}
-     if instance:
-          # data = model_to_dict(instance, fields=['id','title','content','price','sale_price'])
-          data=ProductSerializers(instance).data
-     return Response(data)
-          # json_data = json.dumps(data)
-     # return HttpResponse(json_data, headers={"content-type":"application/json"})
+     serializer = ProductSerializers(data=request.data)
+     if serializer.is_valid(raise_exception=True):
+          print(serializer.data)
+          return Response(serializer.data)
+     return Response({"invalid":"Not a Good Data Insert"}, status=400)

@@ -2,19 +2,23 @@ from django.shortcuts import get_object_or_404
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from rest_framework import generics, mixins, permissions,authentication
+from rest_framework import generics, mixins, permissions, authentication
 
 from api1_app2.models import Product
 from api1_app2.serializers import ProductSerializers
 from api1_app2.permissions import IsStaffEditorPermission
+from api1_app2.authentication import TokenAuthentication
 
 
 class ProductListCreateAPIView(generics.ListCreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializers
     # permission and authentication
-    authentication_classes = [authentication.SessionAuthentication]
-    permission_classes = [permissions.IsAdminUser,IsStaffEditorPermission]
+    authentication_classes = [
+        authentication.SessionAuthentication,
+        TokenAuthentication,
+    ]
+    permission_classes = [permissions.IsAdminUser, IsStaffEditorPermission]
 
     def perform_create(self, serializer):
         # serializer.save(user=self.request.user)
@@ -50,10 +54,6 @@ class ProductDestroyAPIView(generics.DestroyAPIView):
 
     def perform_destory(self, instance):
         super().perform_destory(instance)
-
-
-
-
 
 
 class ProductMixinView(

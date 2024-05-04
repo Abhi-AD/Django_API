@@ -6,6 +6,7 @@ from rest_framework import generics, mixins, permissions,authentication
 
 from api1_app2.models import Product
 from api1_app2.serializers import ProductSerializers
+from api1_app2.permissions import IsStaffEditorPermission
 
 
 class ProductListCreateAPIView(generics.ListCreateAPIView):
@@ -13,7 +14,7 @@ class ProductListCreateAPIView(generics.ListCreateAPIView):
     serializer_class = ProductSerializers
     # permission and authentication
     authentication_classes = [authentication.SessionAuthentication]
-    permission_classes = [permissions.DjangoModelPermissions]
+    permission_classes = [permissions.IsAdminUser,IsStaffEditorPermission]
 
     def perform_create(self, serializer):
         # serializer.save(user=self.request.user)

@@ -6,7 +6,7 @@ A REST API written in Django for people with deadlines
 * [DRF](www.django-rest-framework.org/): A powerful and flexible toolkit for building Web APIs
 
 
-## Installation
+## Installation 
 * If you wish to run your own build, first ensure you have python globally installed in your computer. If not, you can get python [here](https://www.python.org").
 * After doing this, confirm that you have installed virtualenv globally as well. If not, run this:
     ```bash
@@ -20,7 +20,7 @@ A REST API written in Django for people with deadlines
 * #### Dependencies
     1. Cd into your the cloned repo as such:
         ```bash
-            $ cd Django_API
+            $ cd Django_API 
         ```
 
     2. Select the API Folder:

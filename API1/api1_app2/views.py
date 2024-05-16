@@ -19,7 +19,7 @@ class ProductListCreateAPIView(StaffEditorPermissionsMixin, generics.ListCreateA
 
         if content is None:
             content = title
-        serializer.save(content=content)
+        serializer.save(content=content)    # from.save() 
         # send a signal
 
 

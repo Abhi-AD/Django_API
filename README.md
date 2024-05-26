@@ -1,6 +1,7 @@
 # Django-Rest-API
 
 
+
 A REST API written in Django for people with deadlines
 
 ## Technologies used
